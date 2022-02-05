@@ -1,0 +1,87 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li style ="color:white;" class="breadcrumb-item active" aria-current="page">Assign project</li>
+    </ol>
+</nav>
+
+{{#if alert}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{alert}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+<div class="row">
+
+    <div class="col-4">
+        <form class="row g-3 needs-validation border rounded mt-2 py-2  px-2" method="POST"
+            action="/employee/assignproject" novalidate>
+            <div class="mb-3">
+                <label for="Name" class="form-label">Project Name </label>
+                <input type="text" class="form-control" name="pname" required>
+            </div>
+
+
+            <div class="col-6">
+                <label for="role" class="form-label">Dept</label>
+                <input type="number" class="form-control" name="dept_id">
+            </div>
+
+            <div class="col-6">
+                <label for="bonus" class="form-label">funds</label>
+                <input type="number" class="form-control" name="funds" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="Name" class="form-label">Project id </label>
+                <input type="text" class="form-control" name="pid" required>
+            </div>
+
+
+
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+
+
+
+    <div class="col-8 mt-2 ">
+        <table class="table table-dark table-hover table-bordered  table-striped ">
+            <thead>
+                <tr>
+
+                    <th scope="col">pid</th>
+                    <th scope="col">pname</th>
+                    <th scope="col">funds</th>
+                    <th scope="col">Dept id</th>
+                    <th scope="col" class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each rows}}
+                <tr>
+
+                    <td>{{this.pid}}</td>
+                    <td>{{this.pname}}</td>
+                    <td>{{this.funds}}</td>
+                    <td>{{this.dept_id}}</td>
+                    <td class="text-end">
+                        <a href="/employee/editproject/{{this.pid}}" type="button"
+                            class="btn btn-primary btn-small"><i class="bi bi-pen-fill">&nbsp;Edit</i></a>
+                        <a href="/employee/assignproject/{{this.pid}}" type="button"
+                            class="btn btn-danger btn-small"><i class="bi bi-dash-circle-fill">&nbsp;Delete</i></a>
+                    </td>
+
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+
+
+</div>
+
+<footer >
+    <p><b>&copy; 2022 &nbsp; &nbsp;&nbsp; Designed by 	&nbsp;&nbsp;	Mohammed Luqmann 	&nbsp; & 	 	&nbsp; Mukesh Kumar </b></p>
+  </footer>

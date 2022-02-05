@@ -1,0 +1,119 @@
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li style="color:white;" class="breadcrumb-item active" aria-current="page">Assign Department</li>
+    </ol>
+</nav>
+
+
+{{#if alert}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{alert}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+
+
+<div class="row">
+
+
+    <div class="col-4 ">
+        <form class="row g-3 needs-validation border rounded mt-2 py-2  px-2" method="POST"
+            action="/employee/assigndepartment">
+            <div class="mb-3">
+                <label for="Name" class="form-label">Department Name </label>
+                <input type="text" class="form-control" name="dept_name" required>
+            </div>
+
+
+            <div class="col-6">
+                <label for="role" class="form-label">Dept id</label>
+                <input type="number" class="form-control" name="dept_id" required>
+            </div>
+
+
+
+            <div class="col-6 mb-4">
+                <label for="bonus" class="form-label">Manager id</label>
+                <input type="number" class="form-control" name="mgr_id">
+            </div>
+
+
+
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+
+
+
+
+    <div class="col-8 mt-2 ">
+        <div class="row mb-4">
+
+            <div class="col-4">
+                <form method="POST" action="/employee/assigndepartment/sort" novalidate class="d-flex">
+
+                    <select class="form-select " name="sort" id="options" aria-label="Default select example">
+
+                        <option value="dept_name">Dept Name</option>
+                        <option value="dept_id">Dept id</option>
+                        <option value="count">No of employees</option>
+                    </select>
+
+                    <button class="btn btn-success ms-2" type="submit">Sort</button>
+                </form>
+            </div>
+
+            <div class="col-8 d-flex justify-content-end">
+
+                <form method="POST" action="/employee/assigndepartment/search" novalidate class="d-flex">
+                    <input class="form-control me-2" type="search" name="search" placeholder="Search Department"
+                        aria-label="Search">
+                    <button class="btn btn-success" type="submit">Search</button>
+                </form>
+            </div>
+
+        </div>
+        <table class="table table-dark table-hover table-bordered  table-striped ">
+            <thead>
+                <tr>
+
+                    <th scope="col">Dept id</th>
+                    <th scope="col">Dept Name</th>
+                    <th scope="col">No of employees</th>
+                    <th scope="col">Mgr_id</th>
+                    <th scope="col" class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each rows}}
+                <tr>
+                   
+                    <td>{{this.dept_id}}</td>
+                    <td>{{this.dept_name}}</td>
+                    <td>{{this.count}}</td>
+                    <td>{{this.mgr_id}}</td>
+                    <td class="text-end">
+                        <a href="/employee/editdepartment/{{this.dept_id}}" type="button"
+                            class="btn btn-primary btn-small"><i class="bi bi-pen-fill">&nbsp;Edit</i></a>
+                        <a href="/employee/assigndepartment/{{this.dept_id}}" type="button"
+                            class="btn btn-danger btn-small"><i class="bi bi-dash-circle-fill">&nbsp;Delete</i></a>
+                    </td>
+                    
+
+
+
+
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<footer >
+    <p><b>&copy; 2022 &nbsp; &nbsp;&nbsp; Designed by 	&nbsp;&nbsp;	Mohammed Luqmann 	&nbsp; & 	 	&nbsp; Mukesh Kumar </b></p>
+</footer>

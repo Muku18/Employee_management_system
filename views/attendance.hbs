@@ -1,0 +1,85 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li style="color:white;" class="breadcrumb-item active" aria-current="page">Assign leave</li>
+    </ol>
+</nav>
+
+{{#if alert}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{alert}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+<div class="row">
+    <div class="col-4">
+        <form class="row g-3 needs-validation border rounded mt-2 py-2  px-2" method="POST"
+            action="/employee/manageattendance" novalidate>
+            <div class="mb-3 col-6">
+                <label for="Name" class="form-label">leave id</label>
+                <input type="text" class="form-control" name="leave_id">
+            </div>
+
+            <div class="col-6">
+                <label for="Name" class="form-label">Emp id</label>
+                <input type="text" class="form-control" name="id">
+            </div>
+
+
+            <div class="col-6">
+                <label for="role" class="form-label">start date</label>
+                <input type="date" class="form-control" name="start_date">
+            </div>
+
+            <div class="col-6 mb-3">
+                <label for="bonus" class="form-label">end date</label>
+                <input type="date" class="form-control" name="end_date">
+            </div>
+
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+
+    </div>
+
+    <div class="col-8 mt-2">
+
+        <table class="table table-dark table-hover table-bordered  table-striped ">
+            <thead>
+                <tr>
+
+                    <th scope="col">leave id</th>
+                    <th scope="col">Emp id</th>
+                    <th scope="col">start date</th>
+                    <th scope="col">end date</th>
+                    <th scope="col">leave status</th>
+                    <th scope="col" class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each rows}}
+                <tr>
+
+                    <td>{{this.leave_id}}</td>
+                    <td>{{this.emp_id}}</td>
+                    <td>{{this.start_date}}</td>
+                    <td>{{this.end_date}}</td>
+                    <td>{{this.status}}</td>
+                    <td class="text-end">
+                        <a href="/employee/editmanageattendance/{{this.leave_id}}" type="button"
+                            class="btn btn-primary btn-small"><i class="bi bi-pen-fill">&nbsp;Edit</i></a>
+                        <a href="/employee/manageattendance/{{this.leave_id}}" type="button"
+                            class="btn btn-danger btn-small"><i class="bi bi-dash-circle-fill">&nbsp;Delete</i></a>
+                    </td>
+
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<footer >
+    <p><b>&copy; 2022 &nbsp; &nbsp;&nbsp; Designed by 	&nbsp;&nbsp;	Mohammed Luqmann 	&nbsp; & 	 	&nbsp; Mukesh Kumar </b></p>
+  </footer>

@@ -1,0 +1,74 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li style ="color:white;" class="breadcrumb-item active" aria-current="page">Assign Designation</li>
+    </ol>
+</nav>
+
+{{#if alert}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{alert}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+<div class="row">
+    <div class="col-4">
+        <form class="row g-3 needs-validation border rounded mt-2 py-2  px-2" method="POST"
+            action="/employee/assigndesignation" novalidate>
+            <div class="mb-3">
+                <label for="Name" class="form-label">Designation Name </label>
+                <input type="text" class="form-control" name="des_name">
+            </div>
+
+
+            <div class="col-6">
+                <label for="role" class="form-label">Designation id</label>
+                <input type="number" class="form-control" name="did">
+            </div>
+
+            <div class="col-6 mb-4">
+                <label for="bonus" class="form-label">Salary/hr</label>
+                <input type="number" class="form-control" name="sal">
+            </div>
+
+
+
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+
+    <div class="col-8 mt-2 ">
+        <table class="table table-dark table-hover table-bordered  table-striped ">
+            <thead>
+                <tr>
+
+                    <th scope="col">Des id</th>
+                    <th scope="col">Des name</th>
+                    <th scope="col">salary/hr</th>
+                    <th scope="col" class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each rows}}
+                <tr>
+
+                    <td>{{this.did}}</td>
+                    <td>{{this.des_name}}</td>
+                    <td>{{this.sal}}</td>
+                    <td class="text-end">
+                        <a href="/employee/editdesignation/{{this.did}}" type="button"
+                            class="btn btn-primary btn-small"><i class="bi bi-pen-fill">&nbsp;Edit</i></a>
+                        <a href="/employee/assigndesignation/{{this.did}}" type="button"
+                            class="btn btn-danger btn-small"><i class="bi bi-dash-circle-fill">&nbsp;Delete</i></a>
+                    </td>
+
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<footer >
+    <p><b>&copy; 2022 &nbsp; &nbsp;&nbsp; Designed by 	&nbsp;&nbsp;	Mohammed Luqmann 	&nbsp; & 	 	&nbsp; Mukesh Kumar </b></p>
+  </footer>

@@ -1,0 +1,187 @@
+{{!-- <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">View user</li>
+  </ol>
+</nav>
+
+<h1 class="text-center"> Complete Profile</h1>
+{{#each rows}}
+<div class="card">
+  <div class="card-header">
+    <h2>{{this.Name}}</h2>
+  </div>
+  <div class="card-body">
+    <h4 class="card-text">Bonus&nbsp;&nbsp; - {{this.bonus}} </h4>
+    <h4 class="card-text">Total salary&nbsp;&nbsp; - {{this.total_salary}} </h4>
+    <h4 class="card-text">role_id&nbsp;&nbsp; - {{this.role}} </h4>
+    <h4 class="card-text">designation name&nbsp;&nbsp; - {{this.des_name}} </h4>
+    <h4 class="card-text">salary/hr&nbsp;&nbsp; - {{this.sal}} </h4>
+    <h4 class="card-text">dept_id&nbsp;&nbsp; - {{this.dept_id}} </h4>
+    <h4 class="card-text">department name&nbsp;&nbsp; - {{this.dept_name}} </h4>
+    <h4 class="card-text">Manager id&nbsp;&nbsp; - {{this.mgr_id}} </h4>
+    <h4 class="card-text">project name&nbsp;&nbsp; - {{this.pname}} </h4>
+    <h4 class="card-text">project id&nbsp;&nbsp; - {{this.pid}} </h4>
+    <h4 class="card-text">Total funds&nbsp;&nbsp; - {{this.funds}} </h4>
+  </div>
+</div>
+{{/each}} --}}
+
+<nav aria-label="breadcrumb" class="mb-5">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li style ="color:white;" class="breadcrumb-item active" aria-current="page">View user</li>
+  </ol>
+</nav>
+
+{{!-- <h1 class="text-center"> Complete Profile</h1> --}}
+{{#each rows}}
+<div style ="background-color: #212529; color : white;" class ="card text-center">
+  <div class="card-header">
+    <h2>{{this.Name}}</h2>
+  </div>
+</div>
+{{/each}}
+
+
+
+<br>
+<br>
+
+
+<div style = "color: white;" >
+  <h3> Employee details </h3>
+  <table class="table table-dark table-hover table-bordered  table-striped">
+    <thead>
+      <tr>
+
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+
+        <th scope="col">Bonus</th>
+        <th scope="col">Total_salary</th>
+        <th scope="col">Leave_status</th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+      {{#each rows}}
+      <tr>
+
+        <td>{{this.id}}</td>
+        <td>{{this.Name}}</td>
+
+        <td>{{this.bonus}}</td>
+        <td>{{this.total_salary}}</td>
+        <td>{{this.leave_status}}</td>
+
+
+
+      </tr>
+      {{/each}}
+    </tbody>
+
+  </table>
+
+  <h3> Employee department details </h3>
+  <table class="table table-dark table-hover table-bordered  table-striped">
+    <thead>
+      <tr>
+
+        <th scope="col">Dept_id</th>
+        <th scope="col">Dept_name</th>
+        <th scope="col">Manager id</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each rows}}
+      <tr>
+        <td>{{this.dept_id}}</td>
+        <td>{{this.dept_name}}</td>
+        <td>{{this.mgr_id}}</td>
+
+
+
+      </tr>
+      {{/each}}
+    </tbody>
+
+  </table>
+
+  <h3> Employee designation </h3>
+  <table class="table table-dark table-hover table-bordered  table-striped">
+    <thead>
+      <tr>
+
+
+        <th scope="col">Role_id</th>
+        <th scope="col">Designation name</th>
+        <th scope="col">Salary/hr</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {{#each rows}}
+      <tr>
+        <td>{{this.did}}</td>
+        <td>{{this.des_name}}</td>
+        <td>{{this.sal}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+
+  </table>
+
+  <h3> project details </h3>
+  <table class="table table-dark table-hover table-bordered  table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Project id</th>
+        <th scope="col">Project Name</th>
+        <th scope="col">Total funds</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {{#each rows}}
+      <tr>
+
+        <td>{{this.pid}}</td>
+        <td>{{this.pname}}</td>
+        <td>{{this.funds}}</td>
+
+      </tr>
+      {{/each}}
+    </tbody>
+    </table>
+
+      <h3> Employee Attendance details </h3>
+  <table class="table table-dark table-hover table-bordered  table-striped">
+    <thead>
+      <tr>
+        <th scope="col">leave id</th>
+        <th scope="col">leave_status</th>
+        <th scope="col">start_date</th>
+        <th scope="col">end_date</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {{#each rows}}
+      <tr>
+
+        <td>{{this.leave_id}}</td>
+        <td>{{this.status}}</td>
+        <td>{{this.start_date}}</td>
+        <td>{{this.end_date}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+
+  </table>
+</div>
+
+<footer >
+    <p><b>Copyright &copy; 2021 All Rights reserved. Designed by @Mohammed Luqmann </b></p>
+</footer>

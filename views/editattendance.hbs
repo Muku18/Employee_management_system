@@ -1,0 +1,42 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/employee/manageattendance">Assign leave</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Edit Department</li>
+    </ol>
+</nav>
+
+{{#if alert}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{alert}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+{{#each rows}}
+<form class="row g-3 needs-validation border rounded mt-2 py-2  px-2" method="POST" action="/employee/editmanageattendance/{{this.leave_id}}"
+    novalidate>
+    <div class="mb-3 col-6">
+        <label for="Name" class="form-label">leave id</label>
+        <input type="text" class="form-control" name="leave_id" value = {{this.leave_id}}>
+    </div>
+
+    <div class="col-6">
+        <label for="Name" class="form-label">Emp id</label>
+        <input type="text" class="form-control" name="id" value = {{this.emp_id}}>
+    </div>
+
+
+    <div class="col-6">
+        <label for="role" class="form-label">start date</label>
+        <input type="date" class="form-control" name="start_date" value = {{this.start_date}}>
+    </div>
+
+    <div class="col-6 mb-3">
+        <label for="bonus" class="form-label">end date</label>
+        <input type="date" class="form-control" name="end_date" value= {{this.end_date}}>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+{{/each}}

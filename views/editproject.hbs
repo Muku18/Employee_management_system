@@ -1,0 +1,45 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/employee/assignproject">Assign project</a></li>
+        <li  class="breadcrumb-item active" aria-current="page">Edit project</li>
+    </ol>
+</nav>
+
+{{#if alert}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{alert}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+    
+    {{#each rows}}
+     <form class="row g-3 needs-validation border rounded mt-2 py-2  px-2" method="POST"
+            action="/employee/editproject/{{this.pid}}" novalidate>
+            <div class="mb-3">
+                <label for="Name" class="form-label">Project Name </label>
+                <input type="text" class="form-control" name="pname" value = {{this.pname}}>
+            </div>
+
+
+            <div class="col-6">
+                <label for="role" class="form-label">Dept</label>
+                <input type="number" class="form-control" name="dept_id" value = {{this.dept_id}}>
+            </div>
+
+            <div class="col-6">
+                <label for="bonus" class="form-label">funds</label>
+                <input type="number" class="form-control" name="funds" value = {{this.funds}}>
+            </div>
+
+            {{!-- <div class="mb-3">
+                <label for="Name" class="form-label">Project id </label>
+                <input type="text" class="form-control" name="pid" value = {{this.pid}}>
+            </div> --}}
+
+
+
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+
+    {{/each}}

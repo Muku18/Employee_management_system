@@ -1,0 +1,83 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li style ="color:white;" class="breadcrumb-item active" aria-current="page">Works on</li>
+    </ol>
+</nav>
+
+{{#if alert}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{alert}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+
+
+
+<div class="row">
+    <div class="col-4">
+        <form class="row g-3 needs-validation border rounded mt-2 py-2  px-2" method="POST"
+            action="/employee/workproject" novalidate>
+            <div class="mb-3">
+                <label for="id" class="form-label">user id</label>
+                <input type="number" class="form-control" name="id">
+            </div>
+
+
+            <div class="col-6">
+                <label for="pid" class="form-label">project id</label>
+                <input type="number" class="form-control" name="pid">
+            </div>
+
+            <div class="col-6 mb-4">
+                <label for="hours" class="form-label">hours</label>
+                <input type="number" class="form-control" name="hours">
+            </div>
+
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+
+
+    <div class="col-8 mt-2 ">
+        <table class="table table-dark table-hover table-bordered  table-striped ">
+            <thead>
+                <tr>
+
+                    <th scope="col">User id</th>
+                    <th scope="col">project id</th>
+                    <th scope="col">hours</th>
+                    <th scope="col" class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each rows}}
+                <tr>
+
+                    <td>{{this.id}}</td>
+                    <td>{{this.pid}}</td>
+                    <td>{{this.hours}}</td>
+                    <td class="text-end">
+                        {{#if this.id}}
+                            <a href="/employee/editworkproject/{{this.id}}" type="button"
+                            class="btn btn-primary btn-small"><i class="bi bi-pen-fill">&nbsp;Edit</i></a>
+                        {{else}}
+                             <a href="/employee/editworkproject/{{this.pid}}" type="button"
+                            class="btn btn-primary btn-small"><i class="bi bi-pen-fill">&nbsp;Edit</i></a>
+                        {{/if}}
+                        <a href="/employee/workproject/{{this.id}}/{{this.pid}}" type="button"
+                            class="btn btn-danger btn-small"><i class="bi bi-dash-circle-fill">&nbsp;Delete</i></a>
+                    </td>
+
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<footer >
+    <p><b>&copy; 2022 &nbsp; &nbsp;&nbsp; Designed by 	&nbsp;&nbsp;	Mohammed Luqmann 	&nbsp; & 	 	&nbsp; Mukesh Kumar </b></p>
+  </footer>
